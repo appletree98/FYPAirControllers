@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 
+
 public class TimeSingleActivity extends AppCompatActivity {
 
     EditText etDate,etDirection,etTime,etFlight,etPlane;
@@ -40,7 +41,14 @@ public class TimeSingleActivity extends AppCompatActivity {
         etFlight.setText(flight);
         etPlane.setText(plane);
 
-
+//        btnEdit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String updated = etDirection.getText().toString();
+//
+//                mDatabase.child(id).child("Timeslot").setValue(updated);
+//            }
+//        });
 
 
     }

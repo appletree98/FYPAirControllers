@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 //        btnMsg.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent ManageUserIntent = new Intent(MainActivity.this, Chat.class);
+//                Intent ManageUserIntent = new Intent(MainActivity.this, Users.class);
 //                ManageUserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //                startActivity(ManageUserIntent);
 //            }

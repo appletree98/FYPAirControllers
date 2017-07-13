@@ -19,12 +19,15 @@ import java.util.ArrayList;
 
 public class ManageTimeSlot extends AppCompatActivity {
 
-
+    FloatingActionButton fab;
     ListView lvTime;
+    EditText etSearch;
+    Button btnSearch;
 
     DatabaseReference mDatabase;
-    ArrayList<TimeSlot> times = new ArrayList<>();
-    TimeSlotAdapter adapter;
+    ArrayList<Date> times = new ArrayList<>();
+    DateAdapter adapter;
+    java.util.Date todayDate;
 
 
     @Override
@@ -32,28 +35,38 @@ public class ManageTimeSlot extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_time_slot);
 
+//        fab = (FloatingActionButton)findViewById(R.id.fab);
         lvTime = (ListView)findViewById(R.id.lvTimeSlot);
+//        etSearch = (EditText)findViewById(R.id.etSearchDate);
+//        btnSearch = (Button)findViewById(R.id.btnSearch);
 
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date = etSearch.getText().toString();
+
+            }
+        });
 
         Intent i = this.getIntent();
-        final String id = i.getStringExtra("id");
+        final String gateID = i.getStringExtra("gateID");
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(id).child("TimeSlot");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot");
 
-        adapter = new TimeSlotAdapter(this, retrieve());
+        adapter = new DateAdapter(this, retrieve());
         lvTime.setAdapter(adapter);
 
 
 
     }
-    public ArrayList<TimeSlot> retrieve(){
+    public ArrayList<Date> retrieve(){
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    TimeSlot time = ds.getValue(TimeSlot.class);
-                    times.add(time);
+                    Date date = ds.getValue(Date.class);
+                    times.add(date);
 
                 }
             }
@@ -69,3 +82,5 @@ public class ManageTimeSlot extends AppCompatActivity {
     }
 
 }
+
+

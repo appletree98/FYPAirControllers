@@ -33,6 +33,7 @@ public class TimeSlotAdapter extends BaseAdapter {
 
     public class ViewHolder {
         TextView date;
+        TextView direction;
         TextView time;
         TextView flight;
         TextView plane;
@@ -63,6 +64,7 @@ public class TimeSlotAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.timerow, null);
             // Locate the TextViews in listview_item.xml
             holder.date = (TextView) view.findViewById(R.id.tvDate);
+            holder.direction = (TextView) view.findViewById(R.id.tvDirection);
             holder.time = (TextView) view.findViewById(R.id.tvTime);
             holder.flight = (TextView)view.findViewById(R.id.tvFlight);
             holder.plane = (TextView)view.findViewById(R.id.tvPlane);
@@ -73,6 +75,7 @@ public class TimeSlotAdapter extends BaseAdapter {
         }
         // Set the results into TextViews
         holder.date.setText(timelist.get(position).getDate());
+        holder.direction.setText(timelist.get(position).getDirection());
         holder.time.setText(timelist.get(position).getTime());
         holder.flight.setText(timelist.get(position).getFlightNo());
         holder.plane.setText(timelist.get(position).getPlaneID());
@@ -81,7 +84,7 @@ public class TimeSlotAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                open(timelist.get(position).getDate(),timelist.get(position).getTime(),timelist.get(position).getFlightNo(),timelist.get(position).getPlaneID(),timelist.get(position).getId());
+                open(timelist.get(position).getDate(),timelist.get(position).getDirection(),timelist.get(position).getTime(),timelist.get(position).getFlightNo(),timelist.get(position).getPlaneID(),timelist.get(position).getId());
 
             }
         });
@@ -101,6 +104,7 @@ public class TimeSlotAdapter extends BaseAdapter {
 
         mContext.startActivity(i);
     }
+
 
 
 }

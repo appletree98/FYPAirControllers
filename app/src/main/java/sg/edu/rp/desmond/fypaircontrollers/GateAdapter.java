@@ -75,7 +75,7 @@ public class GateAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                open(gatelist.get(position).getGateName(),gatelist.get(position).getTerminalName(),gatelist.get(position).getId());
+                open(gatelist.get(position).getGateName(),gatelist.get(position).getTerminalName());
 
             }
         });
@@ -88,7 +88,7 @@ public class GateAdapter extends BaseAdapter {
         Intent i = new Intent(mContext, GateSingleActivity.class);
         i.putExtra("gateName",details[0]);
         i.putExtra("terminalName",details[1]);
-        i.putExtra("id",details[2]);
+
 
         mContext.startActivity(i);
     }

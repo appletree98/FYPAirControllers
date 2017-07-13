@@ -34,7 +34,7 @@
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_chat);
-// *******NEED TO ADD ACTIVTY CHAT VIEW LATER******
+//
 //        layout = (LinearLayout) findViewById(R.id.layout1);
 //        layout_2 = (RelativeLayout)findViewById(R.id.layout2);
 //        sendButton = (ImageView)findViewById(R.id.sendButton);

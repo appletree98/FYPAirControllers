@@ -27,7 +27,6 @@ import java.util.Locale;
 
 public class ManageGate extends AppCompatActivity {
 
-    FloatingActionButton fab;
     ListView lvGate;
 
     DatabaseReference mDatabase;
@@ -41,18 +40,7 @@ public class ManageGate extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-//        fab = (FloatingActionButton)findViewById(R.id.fab);
-
-
         lvGate = (ListView)findViewById(R.id.lvGate);
-
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(ManageGate.this, AddGate.class));
-//            }
-//        });
-
 
         adapter = new GateAdapter(this, retrieve());
         lvGate.setAdapter(adapter);

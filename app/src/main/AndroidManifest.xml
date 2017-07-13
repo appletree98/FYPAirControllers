@@ -25,7 +25,9 @@
         <activity android:name=".GateSingleActivity" />
         <activity android:name=".ManageGate" />
         <activity android:name=".TimeSingleActivity" />
-        <activity android:name=".ManageTimeSlot"></activity>
+        <activity android:name=".ManageTimeSlot" />
+        <activity android:name=".SingleDateActivity" />
+        <activity android:name=".ManageFlight"></activity>
     </application>
 
 </manifest>
