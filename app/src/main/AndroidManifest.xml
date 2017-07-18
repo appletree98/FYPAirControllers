@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +27,8 @@
         <activity android:name=".ManageGate" />
         <activity android:name=".TimeSingleActivity" />
         <activity android:name=".ManageTimeSlot" />
-        <activity android:name=".SingleDateActivity" />
-        <activity android:name=".ManageFlight"></activity>
+        <activity android:name=".SingleDateActivity"/>
+        <activity android:name=".ManageFlight"/>
     </application>
 
 </manifest>
