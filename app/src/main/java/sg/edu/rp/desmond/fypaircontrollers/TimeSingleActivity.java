@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class TimeSingleActivity extends AppCompatActivity {
@@ -27,14 +28,15 @@ public class TimeSingleActivity extends AppCompatActivity {
         etTime = (EditText)findViewById(R.id.etTime);
         etFlight = (EditText)findViewById(R.id.etFlight);
         etPlane = (EditText)findViewById(R.id.etPlane);
+        btnEdit = (Button)findViewById(R.id.btnEdit);
 
         Intent i = this.getIntent();
-        String date = i.getStringExtra("date");
+        final String date = i.getStringExtra("date");
         String direction = i.getStringExtra("direction");
-        String time = i.getStringExtra("time");
+        final String time = i.getStringExtra("time");
         String flight = i.getStringExtra("flight");
         String plane = i.getStringExtra("plane");
-        final String id = i.getStringExtra("id");
+        final String gateID = i.getStringExtra("gateID");
 
         etDate.setText(date);
         etDirection.setText(direction);
@@ -45,9 +47,10 @@ public class TimeSingleActivity extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot").child(date).child("Flight");
                 String updated = etDirection.getText().toString();
 
-                mDatabase.child(id).child("Timeslot").setValue(updated);
+                mDatabase.child(time).child("direction").setValue(updated);
             }
         });
 

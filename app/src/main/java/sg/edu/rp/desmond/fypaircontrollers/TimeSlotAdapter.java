@@ -84,7 +84,7 @@ public class TimeSlotAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                open(timelist.get(position).getDate(),timelist.get(position).getDirection(),timelist.get(position).getTime(),timelist.get(position).getFlightNo(),timelist.get(position).getPlaneID(),timelist.get(position).getId());
+                open(timelist.get(position).getDate(),timelist.get(position).getDirection(),timelist.get(position).getTime(),timelist.get(position).getFlightNo(),timelist.get(position).getPlaneID(),timelist.get(position).getGateID());
 
             }
         });
@@ -100,7 +100,7 @@ public class TimeSlotAdapter extends BaseAdapter {
         i.putExtra("time",details[2]);
         i.putExtra("flight",details[3]);
         i.putExtra("plane",details[4]);
-        i.putExtra("id",details[5]);
+        i.putExtra("gateID",details[5]);
 
         mContext.startActivity(i);
     }

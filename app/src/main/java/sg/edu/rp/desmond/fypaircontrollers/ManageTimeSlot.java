@@ -40,16 +40,9 @@ public class ManageTimeSlot extends AppCompatActivity {
 //        etSearch = (EditText)findViewById(R.id.etSearchDate);
 //        btnSearch = (Button)findViewById(R.id.btnSearch);
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String date = etSearch.getText().toString();
-
-            }
-        });
 
         Intent i = this.getIntent();
-        final String gateID = i.getStringExtra("gateID");
+        final String gateID = i.getStringExtra("gateName");
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot");
 
