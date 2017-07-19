@@ -3,6 +3,7 @@ package sg.edu.rp.desmond.fypaircontrollers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -41,14 +42,14 @@ public class TimeSingleActivity extends AppCompatActivity {
         etFlight.setText(flight);
         etPlane.setText(plane);
 
-//        btnEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String updated = etDirection.getText().toString();
-//
-//                mDatabase.child(id).child("Timeslot").setValue(updated);
-//            }
-//        });
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String updated = etDirection.getText().toString();
+
+                mDatabase.child(id).child("Timeslot").setValue(updated);
+            }
+        });
 
 
     }
