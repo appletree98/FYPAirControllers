@@ -28,9 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mLoginEmailField;
     private EditText mLoginPasswordField;
     private Button mLoginBtn;
-    private Button mCreateBtn;
-    private Button mForgetBtn;
-
 
     private FirebaseAuth mAuth;
 
@@ -52,8 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         mLoginEmailField = (EditText)findViewById(R.id.loginEmailField);
         mLoginPasswordField = (EditText)findViewById(R.id.loginPasswordField);
         mLoginBtn = (Button) findViewById(R.id.loginBtn);
-        mCreateBtn = (Button)findViewById(R.id.loginCreateAccountBtn);
-        mForgetBtn = (Button)findViewById(R.id.forgetPasswordBtn);
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,24 +58,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-//        mCreateBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-//            }
-//        });
-//
-//        mForgetBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
-//            }
-//        });
-
-
-
-
 
     }
 

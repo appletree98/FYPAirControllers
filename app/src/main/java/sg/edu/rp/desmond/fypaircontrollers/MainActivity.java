@@ -87,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btnMsg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent ManageUserIntent = new Intent(MainActivity.this, Users.class);
-//                ManageUserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(ManageUserIntent);
-//            }
-//        });
+        btnMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ManageUserIntent = new Intent(MainActivity.this, UsersActivity.class);
+                ManageUserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(ManageUserIntent);
+            }
+        });
 
 
     }

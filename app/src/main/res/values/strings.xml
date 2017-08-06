@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FYPAirControllers</string>
+
+    <string-array name="directions">
+        <item>Left</item>
+        <item>Right</item>
+    </string-array>
+
+
 </resources>

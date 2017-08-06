@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +24,35 @@
         <activity android:name=".LoginActivity" />
         <!-- <activity android:name=".Chat" /> -->
         <!-- <activity android:name=".Users" /> -->
-        <activity android:name=".GateSingleActivity" />
         <activity android:name=".ManageGate" />
         <activity android:name=".TimeSingleActivity" />
         <activity android:name=".ManageTimeSlot" />
-        <activity android:name=".SingleDateActivity"/>
-        <activity android:name=".ManageFlight"/>
+        <activity android:name=".ManageFlight" />
+        <activity android:name=".ChatActivity" />
+        <!-- A service that extends FirebaseMessagingService. -->
+        <!-- This is required if you want to do any message handling beyond -->
+        <!-- receiving notifications on apps in the background. -->
+        <!-- To receive notifications in foregrounded apps, to receive data payload, -->
+        <!-- to send upstream messages, and so on, you must extend this service. -->
+        <!-- <service -->
+        <!-- android:name=".MyFirebaseMessagingService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.MESSAGING_EVENT"/> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+
+
+        <!-- A service that extends FirebaseInstanceIdService to handle the creation, -->
+        <!-- rotation, and updating of registration tokens. This is required for sending to -->
+        <!-- specific devices or for creating device groups. -->
+        <!-- <service -->
+        <!-- android:name=".MyFirebaseInstanceIDService"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+
+        <activity android:name=".UsersActivity"></activity>
     </application>
 
 </manifest>

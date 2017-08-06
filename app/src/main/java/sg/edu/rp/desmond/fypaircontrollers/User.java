@@ -8,6 +8,7 @@ public class User {
 
     public String role;
     public String name;
+    static String chatWith = "";
 
     public User(String role, String name) {
         this.role = role;
