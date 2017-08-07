@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,23 +20,24 @@ import java.util.Arrays;
 
 public class TimeSingleActivity extends AppCompatActivity {
 
-    EditText etDate,etDirection,etTime,etFlight,etPlane;
+    TextView etDate,etDirection,etTime,etFlight,etPlane;
     Button btnEdit;
     Spinner spinner;
 
     DatabaseReference mDatabase;
 
+    String a = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_single);
 
-        etDate = (EditText)findViewById(R.id.etDate);
+        etDate = (TextView)findViewById(R.id.etDate);
 //        etDirection = (EditText)findViewById(R.id.etDirection);
-        etTime = (EditText)findViewById(R.id.etTime);
-        etFlight = (EditText)findViewById(R.id.etFlight);
-        etPlane = (EditText)findViewById(R.id.etPlane);
+        etTime = (TextView)findViewById(R.id.etTime);
+        etFlight = (TextView)findViewById(R.id.etFlight);
+        etPlane = (TextView)findViewById(R.id.etPlane);
         btnEdit = (Button)findViewById(R.id.btnEdit);
         spinner = (Spinner)findViewById(R.id.spinner);
 
@@ -63,16 +65,16 @@ public class TimeSingleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot").child(date).child("Flight");
-                String updated = etDirection.getText().toString();
+//                String updated = etDirection.getText().toString();
 
-                String a = "";
+
                 if(spinner.getSelectedItemPosition()==0){
-                    a = "left";
+                    a = "Left";
                 }else{
-                    a = "right";
+                    a = "Right";
                 }
 
-                mDatabase.child(time).child(a).setValue(updated);
+                mDatabase.child(time).child("direction").setValue(a);
             }
         });
 

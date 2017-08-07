@@ -2,6 +2,7 @@ package sg.edu.rp.desmond.fypaircontrollers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,9 @@ public class TimeSlotAdapter extends BaseAdapter {
         holder.flight.setText(timelist.get(position).getFlightNo());
         holder.plane.setText(timelist.get(position).getPlaneID());
 
+        Intent i = new Intent(mContext, ManageFlight.class);
+        i.putExtra("directionA",holder.direction.getText().toString());
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +92,7 @@ public class TimeSlotAdapter extends BaseAdapter {
 
             }
         });
+
 
 
         return view;

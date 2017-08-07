@@ -2,6 +2,7 @@ package sg.edu.rp.desmond.fypaircontrollers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,7 @@ public class GateAdapter extends BaseAdapter {
 
             }
         });
+
 
 
         return view;

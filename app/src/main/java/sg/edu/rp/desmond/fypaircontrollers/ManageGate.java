@@ -2,8 +2,10 @@ package sg.edu.rp.desmond.fypaircontrollers;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -23,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class ManageGate extends AppCompatActivity {
@@ -71,7 +74,50 @@ public class ManageGate extends AppCompatActivity {
         return gates;
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        final MenuItem searchItem = menu.findItem(R.id.item_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                final List<Gate> gateSearchList = new ArrayList<Gate>();
+                ListView lvSearch;
+
+                lvSearch = (ListView)findViewById(R.id.lvGate);
+                for (Gate gate : gates) {
+                    if (gate.getGateName().toLowerCase().contains(newText.toLowerCase())) {
+                        gateSearchList.add(gate);
+                        lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Gate gate = gateSearchList.get(position);
+                                Intent intent = new Intent(getApplicationContext(), ManageTimeSlot.class);
+                                intent.putExtra("terminalname", gate.getTerminalName());
+                                intent.putExtra("gatename", gate.getGateName());
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                }
+
+                adapter = new GateAdapter(ManageGate.this, gateSearchList);
+                lvSearch.setAdapter(adapter);
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
 }
