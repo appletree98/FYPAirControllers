@@ -24,7 +24,7 @@ public class TimeSingleActivity extends AppCompatActivity {
     Spinner spinner;
 
     DatabaseReference mDatabase;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

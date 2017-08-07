@@ -52,7 +52,8 @@
         <!-- </intent-filter> -->
         <!-- </service> -->
 
-        <activity android:name=".UsersActivity"></activity>
+        <activity android:name=".UsersActivity" />
+        <activity android:name=".Chat_Room"></activity>
     </application>
 
 </manifest>

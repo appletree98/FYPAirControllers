@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +13,14 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
     private DownloadManager.Query mQuery;
 
+    ArrayList<User> users = new ArrayList<>();
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private String role = "Admin";
     private Button btnMG, btnMsg;
+
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
                     String currentUserId = mAuth.getCurrentUser().getUid();
-
-
-                    //mQuery = mDatabase.orderByChild("").equalTo(currentUserId);
+                    mDatabaseCurrentUser = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserId);
+                    retrieve();
 
                 }
 
@@ -61,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
         };
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
-
-
-
-
-
 
     }
 
@@ -90,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
         btnMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ManageUserIntent = new Intent(MainActivity.this, UsersActivity.class);
-                ManageUserIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(ManageUserIntent);
+                Intent x = new Intent(MainActivity.this, ChatActivity.class);
+                x.putExtra("name",name);
+                startActivity(x);
             }
         });
 
@@ -132,6 +134,40 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
 
         mAuth.signOut();
+
+    }
+    public ArrayList<User> retrieve(){
+
+        mDatabaseCurrentUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                User user = dataSnapshot.getValue(User.class);
+
+                if(user.getRole().equals("Air Traffic Controller")){
+                    Toast.makeText(MainActivity.this, "Welcome " + user.getName(), Toast.LENGTH_SHORT).show();
+                    name = user.getName().toString();
+                    Log.i("TAG", "onDataChange: "+name);
+                } else {
+                    Toast.makeText(MainActivity.this, "Error your account is not eligible to login", Toast.LENGTH_SHORT).show();
+                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(loginIntent);
+                }
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return users;
 
     }
 }

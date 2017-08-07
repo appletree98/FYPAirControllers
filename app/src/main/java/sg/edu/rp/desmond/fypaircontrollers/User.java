@@ -1,18 +1,25 @@
 package sg.edu.rp.desmond.fypaircontrollers;
 
+import java.io.Serializable;
+
 /**
  * Created by 15017452 on 15/6/2017.
  */
 
-public class User {
+public class User{
 
     public String role;
     public String name;
-    static String chatWith = "";
+    public String uid;
 
-    public User(String role, String name) {
+    public User(){
+
+    }
+
+    public User(String role, String name, String uid) {
         this.role = role;
         this.name = name;
+        this.uid = uid;
     }
 
 
@@ -30,5 +37,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

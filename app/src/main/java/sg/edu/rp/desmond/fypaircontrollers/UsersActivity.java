@@ -16,6 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,6 +36,9 @@ public class UsersActivity extends AppCompatActivity {
     ArrayList<String> al = new ArrayList<>();
     int totalUsers = 0;
     ProgressDialog pd;
+    ArrayList<User> users = new ArrayList<>();
+    DatabaseReference mDatabase;
+    UserAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +48,12 @@ public class UsersActivity extends AppCompatActivity {
         usersList = (ListView)findViewById(R.id.usersList);
         noUsersText = (TextView)findViewById(R.id.noUsersText);
 
-        pd = new ProgressDialog(UsersActivity.this);
-        pd.setMessage("Loading...");
-        pd.show();
-
         String url = "https://fyp2017-e119b.firebaseio.com/Users.json";
+
+//        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+//        adapter = new UserAdapter(this, retrieve());
+//        usersList.setAdapter(adapter);
+
 
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
             @Override
@@ -68,6 +78,28 @@ public class UsersActivity extends AppCompatActivity {
             }
         });
     }
+
+//    public ArrayList<User> retrieve(){
+//
+//        mDatabase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot ds : dataSnapshot.getChildren()){
+//                    User user = ds.getValue(User.class);
+//                    users.add(user);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//        return users;
+//
+//    }
 
     public void doOnSuccess(String s){
         try {
@@ -100,7 +132,7 @@ public class UsersActivity extends AppCompatActivity {
             usersList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
         }
 
-        pd.dismiss();
+
     }
 
 }
