@@ -24,9 +24,7 @@ public class TimeSingleActivity extends AppCompatActivity {
     Spinner spinner;
 
     DatabaseReference mDatabase;
-
-    ArrayList<String> alDirection = new ArrayList<String>();
-    ArrayAdapter<String> aaDirection;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +54,10 @@ public class TimeSingleActivity extends AppCompatActivity {
         etFlight.setText(flight);
         etPlane.setText(plane);
 
-        String[] strRank = getResources().getStringArray(R.array.directions);
-        alDirection.addAll(Arrays.asList(strRank));
+
+        ArrayAdapter<String> aaDirection = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.directions));
         spinner.setAdapter(aaDirection);
+
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
