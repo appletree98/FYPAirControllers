@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="@drawable/separator_line"
-        android:dividerHeight="30px"
+        android:dividerHeight="30dp"
         />
 
 
@@ -18,18 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--android:layout_margin="16dp"-->
-            <!--android:src="@drawable/ic_action_add"-->
-            <!--android:id="@+id/fab"-->
-
-            <!--&gt;-->
-
-
-        <!--</android.support.design.widget.FloatingActionButton>-->
 
 
     </android.support.design.widget.CoordinatorLayout>

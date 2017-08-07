@@ -81,8 +81,12 @@ public class TimeSlotAdapter extends BaseAdapter {
         holder.flight.setText(timelist.get(position).getFlightNo());
         holder.plane.setText(timelist.get(position).getPlaneID());
 
-        Intent i = new Intent(mContext, ManageFlight.class);
-        i.putExtra("directionA",holder.direction.getText().toString());
+        if((timelist.get(position).getDirection()).equalsIgnoreCase("not updated")){
+            view.setBackgroundColor(Color.RED);
+        }else{
+            view.setBackgroundColor(Color.GREEN);
+        }
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -33,10 +33,10 @@
         android:layout_alignEnd="@+id/btn_send">
 
         <TextView
-            android:layout_width="match_parent"
-            android:padding="15dp"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView" />
+        android:layout_width="wrap_content"
+        android:padding="15dp"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView" />
     </ScrollView>
 </RelativeLayout>

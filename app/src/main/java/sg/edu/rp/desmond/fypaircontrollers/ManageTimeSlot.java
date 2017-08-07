@@ -1,6 +1,7 @@
 package sg.edu.rp.desmond.fypaircontrollers;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,10 +26,8 @@ import java.util.List;
 
 public class ManageTimeSlot extends AppCompatActivity {
 
-    FloatingActionButton fab;
+
     ListView lvTime;
-    EditText etSearch;
-    Button btnSearch;
 
     DatabaseReference mDatabase;
     ArrayList<Date> times = new ArrayList<>();
@@ -41,21 +40,16 @@ public class ManageTimeSlot extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_time_slot);
 
-//        fab = (FloatingActionButton)findViewById(R.id.fab);
         lvTime = (ListView)findViewById(R.id.lvTimeSlot);
-//        etSearch = (EditText)findViewById(R.id.etSearchDate);
-//        btnSearch = (Button)findViewById(R.id.btnSearch);
-
 
         Intent i = this.getIntent();
         final String gateID = i.getStringExtra("gateName");
+        String dir = i.getStringExtra("direction");
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot");
 
         adapter = new DateAdapter(this, retrieve());
         lvTime.setAdapter(adapter);
-
-
 
     }
     public ArrayList<Date> retrieve(){
@@ -96,7 +90,7 @@ public class ManageTimeSlot extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 final List<Date> DateSearchList = new ArrayList<Date>();
-                ListView lvSearch;
+                ListView lvTime;
 
                 lvTime = (ListView)findViewById(R.id.lvTimeSlot);
                 for (Date date : times) {
@@ -117,6 +111,7 @@ public class ManageTimeSlot extends AppCompatActivity {
 
                 adapter = new DateAdapter(ManageTimeSlot.this, DateSearchList);
                 lvTime.setAdapter(adapter);
+
                 return true;
             }
         });

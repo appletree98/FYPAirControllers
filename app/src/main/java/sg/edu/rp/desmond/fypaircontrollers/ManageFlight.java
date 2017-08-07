@@ -46,22 +46,13 @@ public class ManageFlight extends AppCompatActivity {
         Intent i = this.getIntent();
         String date = i.getStringExtra("date");
         String gateID = i.getStringExtra("gateID");
-        String directionA = i.getStringExtra("directionA");
 
-        Log.i("Show direction??????", "onCreate: "+directionA);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Gate").child(gateID).child("DaySlot").child(date).child("Flight");
-
-
 
         adapter = new TimeSlotAdapter(this, retrieve());
         lvFlight.setAdapter(adapter);
 
-        if (directionA.equalsIgnoreCase("not updated")) {
-            lvFlight.setBackgroundColor(Color.RED);
-        } else {
-            lvFlight.setBackgroundColor(Color.GREEN);
-        }
     }
 
     public ArrayList<TimeSlot> retrieve(){

@@ -4,24 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sg.edu.rp.desmond.fypaircontrollers.ManageGate">
+    tools:context="sg.edu.rp.desmond.fypaircontrollers.ManageGate"
+    android:orientation="vertical">
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="@drawable/separator_line"
-        android:dividerHeight="30px"
+        android:dividerHeight="30dp"
         android:id="@+id/lvGate"
 
         />
-
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-    </android.support.design.widget.CoordinatorLayout>
 
 
 </LinearLayout>
