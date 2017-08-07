@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private Button btnMG, btnMsg;
 
-    String name;
+    String name,role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent x = new Intent(MainActivity.this, ChatActivity.class);
-                x.putExtra("name",name);
+                x.putExtra("name",name+"("+role+")");
                 startActivity(x);
             }
         });
@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 if(user.getRole().equals("Air Traffic Controller")){
                     Toast.makeText(MainActivity.this, "Welcome " + user.getName(), Toast.LENGTH_SHORT).show();
                     name = user.getName().toString();
+                    role = user.getRole().toString();
                     Log.i("TAG", "onDataChange: "+name);
                 } else {
                     Toast.makeText(MainActivity.this, "Error your account is not eligible to login", Toast.LENGTH_SHORT).show();
